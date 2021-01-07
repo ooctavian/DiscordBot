@@ -7,12 +7,12 @@ return {
 	local args = {}
 	local text = message.content
 	text = helpers.removeFirstWord(text)
-       	args = discordia.extensions.string.split(text,"or")
+       	args = discordia.extensions.string.split(text," or ")
 	if #args then
 		local choosen = args[math.random(#args)]
 		choosen = discordia.extensions.string.trim(choosen)
 		choosen = choosen:gsub("^%l", string.upper)
-		print(choosen..'.')
+		message:reply(choosen..'.')
 	else
 		message:reply('Supply arguments')
 	end

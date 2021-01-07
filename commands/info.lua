@@ -31,7 +31,7 @@ return {
 						value = true
 					}
 				},
-				color = 0x000000 -- hex color code
+				color = 0x8fbcbb -- hex color code
 			}})
 
 		end
