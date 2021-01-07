@@ -2,27 +2,29 @@
 local discordia = require("discordia")
 local client = discordia.Client()
 local helpers = require("helpers")
-local commands= require("commands.init")
+local commands= require("./commands")
+
 prefix = '!'
+
+
 client:on("ready", function() -- bot is ready
 	print("Logged in as " .. client.user.username)
 	client:setGame("Helping other people")
+	collectgarbage("collect")
 end)
-
--- Function to run other functions if they are not nil
-local function run(func)
-if func ~= nil then
-	func()
-end
-end
 
 client:on("messageCreate", function(message)
 	if message.author.bot then return end
 	if helpers.hasPrefix(message.content,prefix) then 
-	local command = string.sub(message.content,#prefix,message.content:find('%s'))
-	message:reply("wtf")
-	run(wtf)
+	local command = string.sub(message.content,#prefix+1,message.content:find('%s'))
+	command = command:gsub("%s+","")
+
+	-- Run a command if it exists 
+	if commands[command] ~= nil then
+		commands[command].command(message)
+	end
 	end 
+	collectgarbage("collect")
 end)
 
 client:run("Bot " .. io.open('token.txt'):read())
