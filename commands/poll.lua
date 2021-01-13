@@ -8,7 +8,6 @@ return {
 	local args = {}
 	local text = message.content
 	local emojis = {'1️⃣' ,'2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟'}
-	print(text)
 	text = helpers.removeFirstWord(text)
 	if text then
 	text = text:sub(text:find('"')+1,#text-1)
@@ -36,7 +35,7 @@ return {
 		    reply:addReaction(emojis[i])
 	    end
 	else
-		message:reply("Please supply arguments to the command")
+		message:reply("Please supply arguments")
 	end
 	end
 	end

@@ -4,8 +4,7 @@ local client = discordia.Client()
 local helpers = require("helpers")
 local commands= require("./commands")
 
-prefix = '!'
-
+local prefix = '!'
 
 client:on("ready", function() -- bot is ready
 	print("Logged in as " .. client.user.username)
@@ -24,6 +23,9 @@ client:on("messageCreate", function(message)
 		commands[command].command(message)
 	end
 	end 
+	if message.content == '<@!'..client.user.id..'>' then
+		message:reply('try `!help`')
+	end
 	collectgarbage("collect")
 end)
 

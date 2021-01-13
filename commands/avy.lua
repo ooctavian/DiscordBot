@@ -13,7 +13,7 @@ return {
 					url = user.avatarURL
 				},
 				footer = {
-					text = "Requested send by " .. message.author.name
+					text = "Requested by " .. message.author.name
 				},
 				color = 0xbf616a -- hex color code
 			}
