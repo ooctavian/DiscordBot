@@ -24,7 +24,7 @@ client:on("messageCreate", function(message)
 	end
 	end 
 	if message.content == '<@!'..client.user.id..'>' then
-		message:reply('try `!help`')
+		message:reply('try `'..prefix..'help`')
 	end
 	collectgarbage("collect")
 end)

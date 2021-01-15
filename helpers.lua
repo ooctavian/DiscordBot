@@ -1,6 +1,6 @@
 local helpers = {}
 function helpers.hasPrefix(string,prefix)
-	if string:find(prefix) then
+	if string:sub(1,#prefix) == prefix then
 		return true
 	else 
 		return false
